@@ -2,11 +2,11 @@
     {
         "id": 1,
         "position": 1,
-        "startAt": "02-02-2009",
-        "endAt": "12-24-2010",
-        "companyName": "Fácil Tecnologias",
-        "website": "http://www.faciltecnologias.com.br/",
-        "logo": "assets/template/experience/logo/facil-logo.png",
+        "startAt": "04-01-2023",
+        "endAt": "10-30-2023",
+        "companyName": "Kenya Ports Authority",
+        "website": "https://www.kpa.co.ke/",
+        "logo": "assets/template/experience/logo/kpa-logo.png",
         "internationalizations": [
             {
                 "language": "pt",
@@ -17,20 +17,10 @@
             },
             {
                 "language": "en",
-                "city": "Uberaba",
-                "country": "Brazil",
-                "role": "Webmaster intern",
-                "description": "<b>Fácil Tecnologias LTDA</b> is a company focused in solutions for education, its main product is a set of solutions for studying for getting the <i>driver license</i>, among them, there are multimedia, online applications, mobile apps, books, and others.<br><br>At <i>Fácil Tecnologias LTDA</i>, I got in touch with senior developers, learning best practices, patterns, and how to debate ideas and offer various solutions for the very same problem. It was the start point, a unique opportunity to turn theoretical knowledge into concrete solutions that were being used by hundreds of people every day."
-            }
-        ],
-        "technologies": [
-            "PHP", "Zend Framework", "Cake Framework", "HTML", "CSS", "CSS3", "Javascript", "jQuery", "AJAX", "SOAP", "Joomla", "Wordpress", "SVN", "SQL", "MySQL", "PostgreSQL", "Windows"
-        ],
-        "medias": [
-            {
-                "icon": "facebook",
-                "title": "Facebook Editora Nosso Trânsito",
-                "http": "https://www.facebook.com/editoranossotransito/"
+                "city": "Nairobi",
+                "country": "Kenya",
+                "role": "Industrial Attachee",
+                "description": "<b>Kenya Ports Authority</b> is a state corporation that functions as the dynamic heart of trade for Kenya and the East and Central Africa region. Its primary responsibility is managing and operating Kenya's scheduled seaports, including the flagship Port of Mombasa.<br><br>At <i>Kenya Ports Authority</i>, I supported critical IT operations. My role was focused on contributing to the team's efforts in maintaining system stability, which was a key part of achieving and sustaining 99.5% network uptime."
             }
         ],
         "backgroundUrl": "assets/template/experience/uberaba.jpg"

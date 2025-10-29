@@ -31,11 +31,19 @@ export class InternationalizationDirective {
 
         if(this._data) {
 
+            // Normalize locale (e.g. 'en-US' -> 'en') so JSON language keys like 'en' or 'pt' match.
+            const normalizedLocale = (this.locale || "en").toString().split("-")[0];
+
             const value: string[] = this._data
-                .filter(element => element.language === (this.locale || "en"))
+                .filter(element => element.language === normalizedLocale)
                 .map(element => element[this.property]) || [""];
 
-            return this.ellipsis > 0 ? new EllipsisPipe().transform(value[0], this.ellipsis) : value;
+            // If ellipsis is provided, return truncated string; otherwise return the string itself (not an array).
+            if (this.ellipsis > 0) {
+                return new EllipsisPipe().transform(value[0], this.ellipsis);
+            }
+
+            return value[0] || "";
 
         }
     }
