@@ -6,42 +6,38 @@
         },
         {
             "language": "en",
-            "description": "My path as a <i>programmer</i> has started at nineish years old, when I've fallen in love with <i>Logo</i>, an educational programming language used to captivate kids in the wonderful lands of <i>Programming</i>. I used to spend hours in a row trying to build figures and animations, using math and geometry. At that time, I just did not know the exciting challenges that were yet to come.<br><br>A few years later, I got an internship as a <i>Webmaster</i>, since then, I have never stopped. It has been more than a decade, where I'm having the chance to work with marvelous people, learning every day, traveling the world, and mainly, always making great friendships.<br><br>I had an entrepreneurship experience, when a friend of mine presented me <i>Magento</i>, an extremely popular e-commerce framework. After doing several courses and a lot of practice, I got contracts with agencies from São Paulo and Rio de Janeiro, Brazil. This entrepreneurship experience gave me the chance to see the other side of the coin, which contributed to sort of expand a bit more my consciousness as an employee.<br><br>Nowadays, I keep seeking new skills, learning and sharing my humble knowledge as much as possible."
+            "description": "I am a cybersecurity enthusiast with a passion for building secure, resilient systems and understanding how attackers think. I enjoy studying threat models, defensive architectures, and practical hardening techniques. My background spans full-stack web development and cloud environments, and I leverage that experience to design secure solutions and automate security workflows. When I'm not exploring security topics, I read technical books, take long hikes to clear my mind, and enjoy documentary films that deepen my understanding of the world."
         }
     ],
-    "medias": [        
+    "medias": [
         {
             "icon": "linkedin",
             "title": "LinkedIn",
-            "http": "https://www.linkedin.com/in/guilhermeborgesbastos/"
+            "http": "https://www.linkedin.com/in/georgesanaet/"
         },
         {
             "icon": "github",
             "title": "GitHub",
-            "http": "https://github.com/guilhermeborgesbastos"
+            "http": "https://github.com/Sanaet-glitch"
         },
         {
-            "icon": "facebook",
-            "title": "Facebook",
-            "http": "https://www.facebook.com/guilherme.borgesbastos"
+            "icon": "globe",
+            "title": "Website",
+            "http": "https://example.com/"
         }
     ],
-    "hobbies": [        
-        {
-            "icon": "biking",
-            "title": "Cycling"
-        },
-        {
-            "icon": "dumbbell",
-            "title": "Gym"
-        },
-        {
-            "icon": "suitcase-rolling",
-            "title": "Travel"
-        },
+    "hobbies": [
         {
             "icon": "book",
-            "title": "Read"
+            "title": "Reading books"
+        },
+        {
+            "icon": "hiking",
+            "title": "Taking hikes"
+        },
+        {
+            "icon": "film",
+            "title": "Documentary junky"
         }
     ]
 }
