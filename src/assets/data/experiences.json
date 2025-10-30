@@ -1,10 +1,10 @@
 [
     {
         "id": 3,
-        "position": 1,
+        "position": 3,
         "startAt": "11-01-2023",
-        "endAt": null,
-        "companyName": "Nairobi Hospital",
+        "endAt": "Current",
+        "companyName": "The Nairobi Hospital",
         "website": "https://www.nairobihospital.org/",
         "logo": "assets/template/experience/logo/nairobi-hospital-logo.png",
         "internationalizations": [
@@ -19,8 +19,8 @@
                 "language": "en",
                 "city": "Nairobi",
                 "country": "Kenya",
-                "role": "Your Current Role",
-                "description": "<b>Nairobi Hospital</b> is a leading healthcare provider in Kenya. <br><br>Add here your current job description, responsibilities, and achievements at Nairobi Hospital."
+                "role": "Intern",
+                "description": "<b>The Nairobi Hospital</b> is a leading non-profit medical center, recognized throughout East Africa as an advanced diagnostic, treatment, and referral hub. With a history of medical excellence since 1954, it has invested heavily in the latest technology and highly qualified professionals to provide world-class, patient-centered care. The hospital is renowned for its multi-specialty services, including emergency and trauma care, and for translating its expertise into internationally compliant healthcare practices. <br><br>My internship at The Nairobi Hospital involved tackling two key operational challenges. First, I addressed the underperforming public website by leading its redesign , which directly resulted in a 20% boost in performance and responsiveness. Secondly, I co-designed a new lightweight internal ticketing system to resolve IT support inefficiencies, successfully cutting issue resolution time by 55%."
             }
         ],
         "technologies": [
@@ -40,7 +40,7 @@
         "position": 2,
         "startAt": "01-01-2024",
         "endAt": null,
-        "companyName": "CBO Organization Name",
+        "companyName": "Naret Olosho CBO",
         "website": "https://example.com/",
         "logo": "assets/template/experience/logo/cbo-logo.png",
         "internationalizations": [
@@ -67,7 +67,7 @@
     },
     {
         "id": 1,
-        "position": 3,
+        "position": 1,
         "startAt": "04-01-2023",
         "endAt": "10-30-2023",
         "companyName": "Kenya Ports Authority",
