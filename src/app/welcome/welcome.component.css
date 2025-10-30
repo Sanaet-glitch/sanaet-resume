@@ -19,4 +19,6 @@
     height: 780px;
     z-index: 1;
     position: relative;
+    image-rendering: high-quality;
+    image-rendering: -webkit-optimize-contrast;
 }

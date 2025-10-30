@@ -12,10 +12,6 @@
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
-          "pt": {
-            "translation": "src/locales/messages.pt.xlf",
-            "baseHref": ""
-          },
           "en": {
             "translation": "src/locales/messages.en.xlf",
             "baseHref": ""
@@ -80,15 +76,6 @@
               "baseHref": "/en/",
               "i18nMissingTranslation": "error"
             },
-            "pt": {
-              "aot": true,
-              "localize": [
-                "pt"
-              ],
-              "outputPath": "dist/pt/",
-              "baseHref": "/pt/",
-              "i18nMissingTranslation": "error"
-            },
             "es5": {
               "tsConfig": "./tsconfig.es5.json"
             }
@@ -112,13 +99,10 @@
             "es5": {
               "browserTarget": "live-resume:build:es5"
             }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "live-resume:build"
-          }
+            "en": {
+              "browserTarget": "live-resume:build:en"
+            },
+            "es5": {
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",

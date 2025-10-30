@@ -9,13 +9,6 @@
         "logo": "assets/template/experience/logo/nbihosp-logo.png",
         "internationalizations": [
             {
-                "language": "pt",
-                "city": "Nairobi",
-                "country": "Quênia",
-                "role": "Seu Cargo Atual",
-                "description": "<b>Nairobi Hospital</b> é um hospital líder no Quênia. <br><br>Adicione aqui a descrição do seu trabalho atual, responsabilidades e conquistas."
-            },
-            {
                 "language": "en",
                 "city": "Nairobi",
                 "country": "Kenya",
@@ -47,13 +40,6 @@
         "logo": null,
         "internationalizations": [
             {
-                "language": "pt",
-                "city": "Cidade",
-                "country": "Quênia",
-                "role": "Voluntário",
-                "description": "<b>Nome da Organização CBO</b> descrição da organização. <br><br>Adicione aqui a descrição do seu trabalho voluntário, atividades e impacto."
-            },
-            {
                 "language": "en",
                 "city": "City",
                 "country": "Kenya",
@@ -73,13 +59,6 @@
         "website": "https://www.kpa.co.ke/",
         "logo": "assets/template/experience/logo/kpa-logo.png",
         "internationalizations": [
-            {
-                "language": "pt",
-                "city": "Uberaba",
-                "country": "Brasil",
-                "role": "Estágio Webmaster",
-                "description": "A <b>Fácil Tecnologias LTDA</b> é uma empresa focada em soluções para educação, seu principal produto é um conjunto de soluções para estudos na obtenção da <i>carteira nacional de habilitação (CNH)</i>, entre elas, multimídias, aplicativos on-line, aplicativos móveis, livros, entre outros. <br><br>Na <i>Fácil Tecnologias LTDA</i>, entrei em contato com desenvolvedores seniores, aprendendo as melhores práticas, padrões e como debater idéias e oferecer soluções diversas para o mesmo problema. Foi o ponto de partida, uma oportunidade única de transformar o conhecimento teórico em soluções concretas que estavam sendo usadas por centenas de pessoas todos os dias."
-            },
             {
                 "language": "en",
                 "city": "Nairobi",

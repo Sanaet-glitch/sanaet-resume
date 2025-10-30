@@ -8,11 +8,6 @@
                 "language": "en",
                 "title": "Cybersecurity & Pen-Testing",
                 "description": "Foundational knowledge from the IBM Cybersecurity Professional certificate combined with practical, hands-on web application security training from PortSwigger's Web Security Academy."
-            },
-            {
-                "language": "pt",
-                "title": "Cibersegurança & Testes de Penetração",
-                "description": "Este cartão abordará meu conhecimento fundamental do certificado IBM Cybersecurity Professional combinado com meu treinamento prático e prático em segurança de aplicativos da Web da Web Security Academy da PortSwigger."
             }
         ]
     },
@@ -24,30 +19,23 @@
             {
                 "language": "en",
                 "title": "Secure Cloud & Infrastructure",
-                "description": "Mastering cloud-native security principles, core AWS services, and secure infrastructure through the AWS Certified Cloud Practitioner re/Start program."
-            },
+        "date": "06-01-2024",
+        "internationalizations": [
             {
-                "language": "pt",
-                "title": "Nuvem Segura & Infraestrutura",
-                "description": "Este cartão detalhará meu treinamento em princípios de segurança nativos da nuvem, serviços principais da AWS e infraestrutura segura como parte do programa AWS Certified Cloud Practitioner re/Start."
+                "language": "en",
+                "title": "Secure Cloud & Infrastructure",
+                "description": "Mastering cloud-native security principles, core AWS services, and secure infrastructure through the AWS Certified Cloud Practitioner re/Start program."
             }
-        ]
-    },
-    {
-        "thumbnail": "assets/posts/logo-python-institute.png",
-        "http": "#",
+        ]date": "09-01-2024",
+        "internationalizations": [
+            {
+                "language": "en",
+                "title": "Secure Development & Automation",
         "date": "09-01-2024",
         "internationalizations": [
             {
                 "language": "en",
                 "title": "Secure Development & Automation",
                 "description": "Formalizing advanced Python skills for secure application development, automation, and scripting, as validated by the Python Institute."
-            },
-            {
-                "language": "pt",
-                "title": "Desenvolvimento Seguro & Automação",
-                "description": "Este cartão destacará minhas habilidades avançadas em Python, validadas pelo Python Institute. Eu uso Python para construir aplicativos seguros, automatizar tarefas de segurança e criar scripts."
             }
         ]
-    }
-]
