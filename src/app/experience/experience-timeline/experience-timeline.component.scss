@@ -54,6 +54,7 @@
       transition: all 0.1s ease-out;
       pointer-events: none; /* Only the Circles in the timeline are listened by events. */
       z-index: 5; /* keep labels above the timeline */
+      text-shadow: none; /* keep dates crisp */
 
       .month {
         margin-right: 5px;
@@ -66,7 +67,7 @@
     background: #414c73;
     top: -8px;
     font-size: 22px;
-    text-shadow: 0 0 15px white;
+    text-shadow: 0 0 10px rgba(255,255,255,0.7); /* soften glow and don't affect label (overridden above) */
   }
   &.active .popupSpan {
     top: -40px;
@@ -88,6 +89,18 @@
     left: 50%;
     transform: translateX(-50%);
     top: -50px;
+  }
+
+  /* Edge handling: keep labels inside viewport near extremes */
+  &.edge-right .popupSpan {
+    left: auto;
+    right: 0;
+    transform: translateX(0);
+  }
+
+  &.edge-left .popupSpan {
+    left: 0;
+    transform: translateX(0);
   }
 }
 

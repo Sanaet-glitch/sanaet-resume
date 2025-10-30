@@ -141,6 +141,12 @@ export class ExperienceTimelineComponent implements OnInit, OnDestroy {
     const leftPos = this.calculatePosition(left, this.offsetWidth);
     // Uses at most 95% instead of 100% in order to avoid collision to the arrow icon on the right side of the timeline.
     this.renderer.setStyle(milestoneElement, "left", `${Math.min(95, leftPos)}%`);
+    // Add edge helper classes to improve label positioning on very left/right extremes
+    if (leftPos <= 8) {
+      this.renderer.addClass(milestoneElement, "edge-left");
+    } else if (leftPos >= 92) {
+      this.renderer.addClass(milestoneElement, "edge-right");
+    }
     this.renderer.setAttribute(milestoneElement, "id-position", index.toString());
 
     const labelElement = this.createLabelElement(date.toString());
