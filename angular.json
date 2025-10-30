@@ -93,16 +93,10 @@
             "en": {
               "browserTarget": "live-resume:build:en"
             },
-            "pt": {
-              "browserTarget": "live-resume:build:pt"
-            },
             "es5": {
               "browserTarget": "live-resume:build:es5"
             }
-            "en": {
-              "browserTarget": "live-resume:build:en"
-            },
-            "es5": {
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
