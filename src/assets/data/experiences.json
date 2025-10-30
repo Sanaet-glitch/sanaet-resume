@@ -2,11 +2,11 @@
     {
         "id": 3,
         "position": 3,
-        "startAt": "11-01-2023",
-        "endAt": "Current",
+        "startAt": "04-22-2025",
+        "endAt": null,
         "companyName": "The Nairobi Hospital",
-        "website": "https://www.nairobihospital.org/",
-        "logo": "assets/template/experience/logo/nairobi-hospital-logo.png",
+        "website": "https://thenairobihosp.org/",
+        "logo": "assets/template/experience/logo/nbihosp-logo.png",
         "internationalizations": [
             {
                 "language": "pt",
