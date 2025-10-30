@@ -3,7 +3,7 @@ export const environment = {
   // replace the data below with your personal data
   personal: {
     caricature: "gbastos-illustration@2x.png",
-    name: "Guilherme Borges Bastos",
+    name: "George Sanaet Sankui",
     birth: "1993-06-29",
     email: "guilhermeborgesbastos@gmail.com",
     phone: "+31 68 733 3020",

@@ -12,10 +12,6 @@
         <div class="first-column">
             <h1 i18n="nav@@aboutMe">About me</h1>
             <h2><span itemprop="name">{{ name }}</span></h2>
-            <p class="years-old">
-                <span itemprop="yearsOld">{{ yearsOld }}</span>
-                &nbsp;<span i18n="about@@yearsOld">years old</span>
-            </p>
             <p class="text" appInternationalization [data]="aboutData?.internationalizations" property='description' itemprop="summary">Loading...</p>
             <div class="hobbies">
                 <h3>Hobbies</h3>
