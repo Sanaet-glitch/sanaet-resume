@@ -35,7 +35,7 @@
                 "http": "https://www.facebook.com/TheNairobiHospital/"
             }
         ],
-        "backgroundUrl": "assets/template/experience/ports.png"
+        "backgroundUrl": "assets/template/experience/hospital.png"
     },
     {
         "id": 2,
@@ -100,6 +100,6 @@
                 "http": "https://www.facebook.com/KenyaPortsAuthority/"
             }
         ],
-        "backgroundUrl": "assets/template/experience/hospital.png"
+        "backgroundUrl": "assets/template/experience/ports.png"
     }
 ]
