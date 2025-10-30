@@ -32,7 +32,9 @@ export class TypingAnimationDirective implements OnInit {
 
     ngOnInit () {
 
-        const nestedArr: IPhrase[] = this.data.filter(el => el.language === (this.locale || "en"));
+        // Normalize locale (e.g. 'en-US' -> 'en') to match JSON language keys
+        const normalizedLocale = (this.locale || "en").toString().split("-")[0];
+        const nestedArr: IPhrase[] = this.data.filter(el => el.language === normalizedLocale);
         this.phrases = this._flatMap(el => el.phrases, nestedArr);
 
         if(this.checkContent()) {
