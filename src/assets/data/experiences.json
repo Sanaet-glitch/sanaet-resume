@@ -23,26 +23,28 @@
                 "description": "<b>The Nairobi Hospital</b> is a leading non-profit medical center, recognized throughout East Africa as an advanced diagnostic, treatment, and referral hub. With a history of medical excellence since 1954, it has invested heavily in the latest technology and highly qualified professionals to provide world-class, patient-centered care. The hospital is renowned for its multi-specialty services, including emergency and trauma care, and for translating its expertise into internationally compliant healthcare practices. <br><br>My internship at The Nairobi Hospital involved tackling two key operational challenges. First, I addressed the underperforming public website by leading its redesign , which directly resulted in a 20% boost in performance and responsiveness. Secondly, I co-designed a new lightweight internal ticketing system to resolve IT support inefficiencies, successfully cutting issue resolution time by 55%."
             }
         ],
-        "technologies": [
-            "Technology1", "Technology2", "Technology3"
-        ],
         "medias": [
             {
                 "icon": "linkedin",
                 "title": "LinkedIn Nairobi Hospital",
                 "http": "https://www.linkedin.com/company/nairobi-hospital/"
+            },
+            {
+                "icon": "facebook",
+                "title": "Facebook Nairobi Hospital",
+                "http": "https://www.facebook.com/TheNairobiHospital/"
             }
         ],
-        "backgroundUrl": "assets/template/experience/uberaba.jpg"
+        "backgroundUrl": "assets/template/experience/ports.png"
     },
     {
         "id": 2,
         "position": 2,
-        "startAt": "01-01-2024",
+        "startAt": "12-01-2023",
         "endAt": null,
         "companyName": "Naret Olosho CBO",
         "website": "https://example.com/",
-        "logo": "assets/template/experience/logo/cbo-logo.png",
+        "logo": null,
         "internationalizations": [
             {
                 "language": "pt",
@@ -56,14 +58,11 @@
                 "city": "City",
                 "country": "Kenya",
                 "role": "Volunteer",
-                "description": "<b>CBO Organization Name</b> organization description. <br><br>Add here your volunteer work description, activities, and impact at this community-based organization."
+                "description": "<b>Naret Olosho CBO</b> is a community-based organization dedicated to driving social change at a grassroots level. Its core mission is focused on three key pillars: promoting women's empowerment, supporting vulnerable groups within the community, and actively engaging rural youth through targeted education and advocacy programs. <br><br>As a Volunteer Leader for Naret Olosho CBO, I was tasked with turning the organization's social goals into functioning, on-the-ground programs. The CBO aimed to support diverse community needs, but required structured initiatives to be effective. I took responsibility for designing and executing these initiatives from the ground up. I personally organized and launched new educational workshops to engage rural youth, coordinated logistics for support drives aimed at vulnerable groups, and developed advocacy campaigns to promote women's empowerment. Through this hands-on leadership, I successfully mobilized volunteers and delivered multiple, tangible support programs, translating a mission into real-world community action."
             }
         ],
-        "technologies": [
-            "Skill1", "Skill2", "Skill3"
-        ],
         "medias": [],
-        "backgroundUrl": "assets/template/experience/uberaba.jpg"
+        "backgroundUrl": "assets/template/experience/humanity.png"
     },
     {
         "id": 1,
@@ -89,16 +88,18 @@
                 "description": "<b>Kenya Ports Authority</b> is a state corporation that functions as the dynamic heart of trade for Kenya and the East and Central Africa region. Its primary responsibility is managing and operating Kenya's scheduled seaports, including the flagship Port of Mombasa.<br><br>At <i>Kenya Ports Authority</i>, I supported critical IT operations. My role was focused on contributing to the team's efforts in maintaining system stability, which was a key part of achieving and sustaining 99.5% network uptime. This was a unique opportunity to apply a results-oriented mindset and understand how robust IT infrastructure directly supports the vital, large-scale logistics and trade operations of the nation."
             }
         ],
-        "technologies": [
-            "PHP", "Zend Framework", "Cake Framework", "HTML", "CSS", "CSS3", "Javascript", "jQuery", "AJAX", "SOAP", "Joomla", "Wordpress", "SVN", "SQL", "MySQL", "PostgreSQL", "Windows"
-        ],
         "medias": [
+            {
+                "icon": "linkedin",
+                "title": "LinkedIn Kenya Ports Authority",
+                "http": "https://www.linkedin.com/company/kenya-ports-authority/"
+            },
             {
                 "icon": "facebook",
                 "title": "Facebook Kenya Ports Authority",
                 "http": "https://www.facebook.com/KenyaPortsAuthority/"
             }
         ],
-        "backgroundUrl": "assets/template/experience/uberaba.jpg"
+        "backgroundUrl": "assets/template/experience/hospital.png"
     }
 ]
