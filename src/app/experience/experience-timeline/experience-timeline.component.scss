@@ -55,6 +55,7 @@
       pointer-events: none; /* Only the Circles in the timeline are listened by events. */
       z-index: 5; /* keep labels above the timeline */
       text-shadow: none; /* keep dates crisp */
+        font-size: 22px;
 
       .month {
         margin-right: 5px;
@@ -71,7 +72,6 @@
   }
   &.active .popupSpan {
     top: -40px;
-    display: block;
   }
   &.active.future {
     width: 1px;
@@ -102,6 +102,16 @@
     left: 0;
     transform: translateX(0);
   }
+}
+
+/* Density control: avoid overlapping labels on medium/small screens */
+.milestone .popupSpan { display: none; }
+.milestone.current .popupSpan { display: block; }
+.line .milestone:first-child .popupSpan { display: block; }
+
+/* On wide screens, allow all labels as before */
+@media (min-width: 1400px) {
+  .milestone.active .popupSpan { display: block; }
 }
 
 @keyframes grow {
