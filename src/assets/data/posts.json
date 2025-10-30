@@ -1,6 +1,6 @@
 [
     {
-        "thumbnail": "assets/posts/math.jpg",
+        "thumbnail": "assets/posts/logo-portswigger.png",
         "http": "#",
         "date": "Completed & Ongoing",
         "internationalizations": [
@@ -17,7 +17,7 @@
         ]
     },
     {
-        "thumbnail": "assets/posts/dev.jpg",
+        "thumbnail": "assets/posts/logo-aws.png",
         "http": "#",
         "date": "Ongoing",
         "internationalizations": [
@@ -34,7 +34,7 @@
         ]
     },
     {
-        "thumbnail": "assets/posts/map.jpg",
+        "thumbnail": "assets/posts/logo-python-institute.png",
         "http": "#",
         "date": "Ongoing",
         "internationalizations": [
