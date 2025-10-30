@@ -2,7 +2,7 @@
     <div class="container">
         <div class="top-container">
             <div class="title">
-                <h1 i18n="nav@@posts">Posts</h1>
+                <h1 i18n="nav@@posts">Certifications & Training</h1>
             </div>
             <div class="navigation">
                 <a href="javascript:void(0)" class="previous" (click)="onClickPrevious()" [ngClass]="{'disabled': disablePreviousNavigation()}">
@@ -20,7 +20,7 @@
                 </a>
             </div>
         </div>
-        <p class="synopsis" i18n="posts@@synopsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate sagittis velit, eget scelerisque arcu semper finibus.</p>
+        <p class="synopsis" i18n="posts@@synopsis">My professional development journey includes industry-recognized certifications and hands-on training programs in cybersecurity, cloud infrastructure, and secure software development.</p>
         <div class="middle-container" (swipe)="onSwipe($event)">
             <app-posts-carousel
                 [posts]="posts"
