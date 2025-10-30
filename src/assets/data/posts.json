@@ -19,18 +19,13 @@
             {
                 "language": "en",
                 "title": "Secure Cloud & Infrastructure",
-        "date": "06-01-2024",
-        "internationalizations": [
-            {
-                "language": "en",
-                "title": "Secure Cloud & Infrastructure",
                 "description": "Mastering cloud-native security principles, core AWS services, and secure infrastructure through the AWS Certified Cloud Practitioner re/Start program."
             }
-        ]date": "09-01-2024",
-        "internationalizations": [
-            {
-                "language": "en",
-                "title": "Secure Development & Automation",
+        ]
+    },
+    {
+        "thumbnail": "assets/posts/logo-python-institute.png",
+        "http": "#",
         "date": "09-01-2024",
         "internationalizations": [
             {
@@ -39,3 +34,5 @@
                 "description": "Formalizing advanced Python skills for secure application development, automation, and scripting, as validated by the Python Institute."
             }
         ]
+    }
+]
