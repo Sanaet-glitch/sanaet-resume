@@ -20,13 +20,22 @@
                 "city": "Nairobi",
                 "country": "Kenya",
                 "role": "Industrial Attachee",
-                "description": "<b>Kenya Ports Authority</b> is a state corporation that functions as the dynamic heart of trade for Kenya and the East and Central Africa region. Its primary responsibility is managing and operating Kenya's scheduled seaports, including the flagship Port of Mombasa.<br><br>At <i>Kenya Ports Authority</i>, I supported critical IT operations. My role was focused on contributing to the team's efforts in maintaining system stability, which was a key part of achieving and sustaining 99.5% network uptime."
+                "description": "<b>Kenya Ports Authority</b> is a state corporation that functions as the dynamic heart of trade for Kenya and the East and Central Africa region. Its primary responsibility is managing and operating Kenya's scheduled seaports, including the flagship Port of Mombasa.<br><br>At <i>Kenya Ports Authority</i>, I supported critical IT operations. My role was focused on contributing to the team's efforts in maintaining system stability, which was a key part of achieving and sustaining 99.5% network uptime. This was a unique opportunity to apply a results-oriented mindset and understand how robust IT infrastructure directly supports the vital, large-scale logistics and trade operations of the nation."
+            }
+        ],
+        "technologies": [
+            "PHP", "Zend Framework", "Cake Framework", "HTML", "CSS", "CSS3", "Javascript", "jQuery", "AJAX", "SOAP", "Joomla", "Wordpress", "SVN", "SQL", "MySQL", "PostgreSQL", "Windows"
+        ],
+        "medias": [
+            {
+                "icon": "facebook",
+                "title": "Facebook Kenya Ports Authority",
+                "http": "https://www.facebook.com/KenyaPortsAuthority/"
             }
         ],
         "backgroundUrl": "assets/template/experience/uberaba.jpg"
-    },
-    {
-        "id": 2,
+    }
+]
         "position": 2,
         "startAt": "01-03-2011",
         "endAt": "06-16-2014",
