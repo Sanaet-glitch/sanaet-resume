@@ -16,8 +16,10 @@ export class ContactService {
         formData.append('email', contact.email);
         formData.append('message', contact.message);
         
+        // Add Accept: application/json header to get 200 OK instead of 302 redirect
         const headers = new HttpHeaders({
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json'
         });
         
         return this.http.post(this.pageclipUrl, formData.toString(), { headers }).toPromise();
