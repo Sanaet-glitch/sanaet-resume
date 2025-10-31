@@ -93,7 +93,14 @@ export class ExperienceTimelineComponent implements OnInit, OnDestroy {
 
   populateExperienceTimeline(): void {
 
-    let dates: string[] = this._experiences.map(experience => experience.startAt);
+    // Collect all start dates and end dates to show full timeline range
+    let dates: string[] = [];
+    
+    // Add all start dates
+    dates = dates.concat(this._experiences.map(experience => experience.startAt));
+    
+    // Add all end dates (where they exist)
+    dates = dates.concat(this._experiences.filter(exp => exp.endAt).map(exp => exp.endAt));
 
     // Adding the current day in order to complete the timeline.
     dates.push(this.retrieveTodayDateAsString());
