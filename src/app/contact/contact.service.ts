@@ -23,6 +23,18 @@ export class ContactService {
             'Accept': 'application/json'
         });
         
-        return this.http.post(this.pageclipUrl, data, { headers }).toPromise();
+        // Pageclip may return a 302 redirect which HttpClient treats as success
+        // We need to handle both success and "redirect error" as success
+        return this.http.post(this.pageclipUrl, data, { headers })
+            .toPromise()
+            .catch((error) => {
+                // If it's a 302 redirect or CORS-related, treat it as success
+                // Pageclip redirects on success, which appears as an error in Angular
+                if (error.status === 0 || error.status === 302) {
+                    return Promise.resolve({ success: true });
+                }
+                // For other errors, reject
+                return Promise.reject(error);
+            });
     }
 }
