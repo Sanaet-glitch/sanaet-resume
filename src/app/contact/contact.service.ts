@@ -1,6 +1,6 @@
 import { Contact } from "../model/contact.model";
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({ providedIn: "root" })
 export class ContactService {
@@ -10,13 +10,16 @@ export class ContactService {
     constructor(private http: HttpClient) { }
 
     createContact(contact: Contact): Promise<any> {
-        // Pageclip expects the data to be sent with all form fields
-        const formData = {
-            name: contact.name,
-            email: contact.email,
-            message: contact.message
-        };
+        // Pageclip expects form-encoded data
+        const formData = new URLSearchParams();
+        formData.append('name', contact.name);
+        formData.append('email', contact.email);
+        formData.append('message', contact.message);
         
-        return this.http.post(this.pageclipUrl, formData).toPromise();
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/x-www-form-urlencoded'
+        });
+        
+        return this.http.post(this.pageclipUrl, formData.toString(), { headers }).toPromise();
     }
 }
