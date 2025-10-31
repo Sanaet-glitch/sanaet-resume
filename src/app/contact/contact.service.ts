@@ -10,18 +10,19 @@ export class ContactService {
     constructor(private http: HttpClient) { }
 
     createContact(contact: Contact): Promise<any> {
-        // Pageclip expects form-encoded data
-        const formData = new URLSearchParams();
-        formData.append('name', contact.name);
-        formData.append('email', contact.email);
-        formData.append('message', contact.message);
+        // Prepare data object for Pageclip
+        const data = {
+            name: contact.name,
+            email: contact.email,
+            message: contact.message
+        };
         
         // Add Accept: application/json header to get 200 OK instead of 302 redirect
         const headers = new HttpHeaders({
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
             'Accept': 'application/json'
         });
         
-        return this.http.post(this.pageclipUrl, formData.toString(), { headers }).toPromise();
+        return this.http.post(this.pageclipUrl, data, { headers }).toPromise();
     }
 }
