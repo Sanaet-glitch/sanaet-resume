@@ -47,11 +47,14 @@ export class ExperienceComponent extends AbstractSwipeSection implements OnInit 
     // Fetch the Experiences from the Data Service
     this.dataService.getExperiences()
         .subscribe((experiences: IExperience[]) => {
-          this.currentPosition = experiences.length;
           this.experiences = experiences;
 
           this.experiencesOrdered = [...experiences];
-          this.experiencesOrdered.sort(this.sortService.sort("position", "desc"));       
+          this.experiencesOrdered.sort(this.sortService.sort("position", "asc"));       
+          
+          // Set current position to the highest position (most recent experience)
+          this.currentPosition = this.experiencesOrdered[this.experiencesOrdered.length - 1].position;
+          
           this.backgroundUrl = this.retrieveBackgroundUrl();
           this.updateMobileNavigationView();
           this.preloadBounderyImages(experiences.map(xp => xp.backgroundUrl));
