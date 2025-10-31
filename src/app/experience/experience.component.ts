@@ -140,15 +140,16 @@ export class ExperienceComponent extends AbstractSwipeSection implements OnInit 
   }
 
   private retrieveBackgroundUrl(): string {
-    return this.experiences[this.currentPosition - 1].backgroundUrl;
+    return this.experiencesOrdered.find(exp => exp.position === this.currentPosition)?.backgroundUrl;
   }
 
   private updateMobileNavigationView() {
-    this.previousYear = 
-      this.experiences[this.currentPosition - 2]?.startAt || this.experiences[this.currentPosition - 1].startAt;
-    this.currentYear = 
-      this.experiences[this.currentPosition - 1].startAt;
-    this.nextYear = 
-      this.experiences[this.currentPosition]?.startAt || this.experiences[this.currentPosition - 1].startAt;
+    const currentExp = this.experiencesOrdered.find(exp => exp.position === this.currentPosition);
+    const prevExp = this.experiencesOrdered.find(exp => exp.position === this.currentPosition - 1);
+    const nextExp = this.experiencesOrdered.find(exp => exp.position === this.currentPosition + 1);
+    
+    this.previousYear = prevExp?.startAt || currentExp?.startAt;
+    this.currentYear = currentExp?.startAt;
+    this.nextYear = nextExp?.startAt || currentExp?.startAt;
   }
 }
