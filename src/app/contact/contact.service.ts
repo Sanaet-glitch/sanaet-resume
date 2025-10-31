@@ -1,7 +1,6 @@
 import { Contact } from "../model/contact.model";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { firstValueFrom } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class ContactService {
@@ -18,6 +17,6 @@ export class ContactService {
             message: contact.message
         };
         
-        return firstValueFrom(this.http.post(this.pageclipUrl, formData));
+        return this.http.post(this.pageclipUrl, formData).toPromise();
     }
 }
