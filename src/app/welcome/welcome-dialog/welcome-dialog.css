@@ -1,9 +1,12 @@
 
 /* Dialog container */
 .dialog-container {
-	z-index: 2;
+	z-index: 10;
 	margin-top: 5em;
 	animation: float-dialog 6s ease-in-out infinite;
+	position: absolute;
+	right: 5%;
+	top: 50px;
 }
 
 .dialog-container img {

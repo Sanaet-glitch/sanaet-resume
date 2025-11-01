@@ -2,7 +2,7 @@
     position: absolute;
     top: 150px;
     left: 5px;
-	z-index: 0;
+	z-index: 1;
 	
 	img.background {
 		width: 535px;
@@ -55,21 +55,6 @@
 		&.sixth {
 			top: -20px;
 			left: 50px;
-		}
-
-		&.seventh {
-			top: -20px;
-			right: 50px;
-		}
-
-		&.eighth {
-			bottom: 110px;
-			right: -30px;
-		}
-
-		&.ninth {
-			bottom: 40px;
-			right: 10px;
 		}
 	}
 }

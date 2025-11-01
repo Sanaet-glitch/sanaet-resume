@@ -1,7 +1,7 @@
 <section id="contact" itemscope itemtype="https://schema.org/ContactPage">
     <div class="feedback-container" [ngClass]="feedbackStatus">
         <p class="success">
-            <span i18n="contact@@successfulSubmit">Thank you for contacting me, I'll reply to you very soon.</span>
+            <span i18n="contact@@successfulSubmit">Thank you for contacting me, I'll reply to you soon.</span>
             <fa-icon [icon]="faTimes" class="icon" title="Close" (click)="closeFeedbackMessage()"></fa-icon>
         </p>
         <p class="error">
@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label for="name" i18n="contact@@name">Your name:</label>
                         <input [class.is-invalid]="senderName.invalid && senderName.touched"
-                            type="text" name="name" i18n-placeholder="contact@@namePlaceholder" placeholder="Mark" formControlName="name" >
+                            type="text" name="name" i18n-placeholder="contact@@namePlaceholder" placeholder="eg. John Doe" formControlName="name" >
                         <div class="warnings" *ngIf="(senderName.invalid && senderName.touched) || senderName.dirty">
                             <!--question mark(?) is a safe navigation operator-->
                             <small *ngIf="senderName.errors?.required" class="text-danger" i18n="contact@@requiredNameError">The name is required.</small>
@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label for="email" i18n="contact@@email">Email:</label>
                         <input [class.is-invalid]="senderEmail.invalid && senderEmail.touched"
-                            type="email" name="email" i18n-placeholder="contact@@emailPlaceholder" placeholder="mark@gmail.com" formControlName="email" required>
+                            type="email" name="email" i18n-placeholder="contact@@emailPlaceholder" placeholder="example@gmail.com" formControlName="email" required>
                         <div class="warnings" *ngIf="(senderEmail.invalid && senderEmail.touched) || senderEmail.dirty">
                             <!--question mark(?) is a safe navigation operator-->
                             <small *ngIf="senderEmail.errors?.required" class="text-danger" i18n="contact@@requiredEmailError">The email is required.</small>
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label for="message" i18n="contact@@message">Your message:</label>
                         <textarea [class.is-invalid]="senderMessage.invalid && senderMessage.touched"
-                            name="message" i18n-placeholder="contact@@messagePlaceholder" placeholder="Write here your message... I will reply to you soon." formControlName="message" required></textarea>
+                            name="message" i18n-placeholder="contact@@messagePlaceholder" placeholder="Write your message here... I will reply soon." formControlName="message" required></textarea>
                         <div class="warnings" *ngIf="(senderMessage.invalid && senderMessage.touched) || senderMessage.dirty">
                             <!--question mark(?) is a safe navigation operator-->
                             <small *ngIf="senderMessage.errors?.required" class="text-danger" i18n="contact@@requiredMessageError">The message is required.</small>

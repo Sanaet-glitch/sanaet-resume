@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 @Injectable({ providedIn: "root" })
 export class ContactService {
 
-    private pageclipUrl = "https://send.pageclip.co/8S1Y604Hog9FmUFhdElsaml3QKncKI8F";
+    private pageclipUrl = "https://send.pageclip.co/HfKDDFoSIjCcd8R77W95M6KfYLLM7Zyk";
 
     constructor(private http: HttpClient) { }
 
