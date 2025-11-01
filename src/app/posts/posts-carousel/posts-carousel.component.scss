@@ -28,6 +28,8 @@
             box-shadow: 0 0 9px 0 rgba(240, 223, 223, 0.16);
             border: 1px solid #c8cad547;
             transition: all 0.2s ease-in-out;
+            max-width: 360px;
+            width: 100%;
 
             a {
                 text-decoration: none;
