@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm run build -- --configuration production",
+  "installCommand": "npm install --legacy-peer-deps",
+  "outputDirectory": "dist/live-resume",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
