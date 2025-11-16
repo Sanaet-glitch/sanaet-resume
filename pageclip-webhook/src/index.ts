@@ -25,46 +25,53 @@ const {
 
 const dryRun = SKIP_EMAIL === "true";
 
-if (!dryRun && !RESEND_API_KEY) {
-  throw new Error("Missing RESEND_API_KEY environment variable.");
-}
+const ensureEnv = () => {
+  if (!dryRun && !RESEND_API_KEY) {
+    throw new Error("Missing RESEND_API_KEY environment variable.");
+  }
 
-if (!MAIL_TO || !MAIL_FROM) {
-  throw new Error("MAIL_TO and MAIL_FROM environment variables must be set.");
-}
-
-const resend = !dryRun ? new Resend(RESEND_API_KEY as string) : null;
-
-if (dryRun) {
-  console.warn("SKIP_EMAIL=true: webhook will log payloads instead of sending via Resend");
-}
-
-const app = express();
-const localDevOrigins = ["http://localhost:4200", "http://127.0.0.1:4200"];
-const normalizedAllowedOrigins = ALLOWED_ORIGINS
-  ? ALLOWED_ORIGINS.split(",")
-      .map((origin) => origin.trim())
-      .filter(Boolean)
-  : [];
-
-const combinedOrigins = normalizedAllowedOrigins.length
-  ? Array.from(new Set([...normalizedAllowedOrigins, ...localDevOrigins]))
-  : "*";
-
-const corsOptions: CorsOptions = {
-  origin: combinedOrigins,
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  if (!MAIL_TO || !MAIL_FROM) {
+    throw new Error("MAIL_TO and MAIL_FROM environment variables must be set.");
+  }
 };
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const createApp = () => {
+  ensureEnv();
 
-app.get("/health", (_req: Request, res: Response) => {
-  res.json({ status: "ok" });
-});
+  const mailTo = MAIL_TO as string;
+  const mailFrom = MAIL_FROM as string;
+  const resend = !dryRun ? new Resend(RESEND_API_KEY as string) : null;
+
+  if (dryRun) {
+    console.warn("SKIP_EMAIL=true: webhook will log payloads instead of sending via Resend");
+  }
+
+  const app = express();
+  const localDevOrigins = ["http://localhost:4200", "http://127.0.0.1:4200"];
+  const normalizedAllowedOrigins = ALLOWED_ORIGINS
+    ? ALLOWED_ORIGINS.split(",")
+        .map((origin) => origin.trim())
+        .filter(Boolean)
+    : [];
+
+  const combinedOrigins = normalizedAllowedOrigins.length
+    ? Array.from(new Set([...normalizedAllowedOrigins, ...localDevOrigins]))
+    : "*";
+
+  const corsOptions: CorsOptions = {
+    origin: combinedOrigins,
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  };
+
+  app.use(cors(corsOptions));
+  app.options("*", cors(corsOptions));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+
+  app.get("/health", (_req: Request, res: Response) => {
+    res.json({ status: "ok" });
+  });
 
 type Submission = {
   name?: string;
@@ -153,7 +160,7 @@ const extractSubmission = (body: unknown): Submission => {
   };
 };
 
-app.post("/contact", async (req: Request, res: Response) => {
+  app.post("/contact", async (req: Request, res: Response) => {
   const submission = extractSubmission(req.body);
   const { name, email, message, ...rest } = submission;
 
@@ -190,8 +197,8 @@ app.post("/contact", async (req: Request, res: Response) => {
       console.log("[SKIP_EMAIL] Would send contact email", { name, email, rest });
     } else {
       await resend!.emails.send({
-        to: MAIL_TO,
-        from: MAIL_FROM,
+        to: mailTo,
+        from: mailFrom,
         subject: `New contact from ${name}`,
         text: `Name: ${name}\nEmail: ${email}\n\n${message}\n\nExtra:\n${JSON.stringify(rest, null, 2)}`,
         html,
@@ -204,12 +211,21 @@ app.post("/contact", async (req: Request, res: Response) => {
     console.error("Failed to send email", error);
     res.status(502).json({ error: "Email dispatch failed" });
   }
-});
+  });
 
-app.use((req, res) => {
-  res.status(404).json({ error: "Not found" });
-});
+  app.use((req, res) => {
+    res.status(404).json({ error: "Not found" });
+  });
 
-app.listen(Number(PORT), () => {
-  console.log(`Pageclip webhook listening on port ${PORT}`);
-});
+  return app;
+};
+
+const app = createApp();
+
+if (require.main === module) {
+  app.listen(Number(PORT), () => {
+    console.log(`Pageclip webhook listening on port ${PORT}`);
+  });
+}
+
+export default app;
