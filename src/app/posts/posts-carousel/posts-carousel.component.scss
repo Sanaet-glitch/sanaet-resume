@@ -108,7 +108,19 @@
                     text-overflow: ellipsis;
                     display: -webkit-box;
                     -webkit-line-clamp: 4;
+                    line-clamp: 4;
                     -webkit-box-orient: vertical;
+
+                    &.description--expanded {
+                        font-size: 16px;
+                        line-height: 1.7em;
+                        overflow: visible;
+                        text-overflow: initial;
+                        display: block;
+                        -webkit-line-clamp: unset;
+                        line-clamp: unset;
+                        -webkit-box-orient: unset;
+                    }
                 }
             }
 

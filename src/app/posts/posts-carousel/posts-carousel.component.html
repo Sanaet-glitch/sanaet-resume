@@ -17,7 +17,14 @@
                         <h2 class="title" itemprop="name" itemprop="headline">
                             <a href="{{ post.http }}" target="_blank" rel="nofollow" appInternationalization [data]="post.internationalizations" property='title'>Loading...</a>
                         </h2>
-                        <p class="description" appInternationalization [data]="post.internationalizations" property='description' ellipsis='275' itemprop="description">Loading...</p>
+                        <p
+                            class="description"
+                            [ngClass]="post.descriptionClass"
+                            appInternationalization
+                            [data]="post.internationalizations"
+                            property='description'
+                            [ellipsis]="post.descriptionEllipsis ?? 275"
+                            itemprop="description">Loading...</p>
                     </div>
                 </a>
             </div>

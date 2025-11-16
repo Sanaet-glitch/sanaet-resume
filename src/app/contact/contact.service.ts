@@ -1,41 +1,37 @@
 import { Contact } from "../model/contact.model";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from "../../environments/environment";
 
 @Injectable({ providedIn: "root" })
 export class ContactService {
 
-    private pageclipUrl = "https://send.pageclip.co/HfKDDFoSIjCcd8R77W95M6KfYLLM7Zyk";
+    private endpoint = environment.contactEndpoint;
 
     constructor(private http: HttpClient) { }
 
     createContact(contact: Contact): Promise<any> {
-        // Prepare data object for Pageclip
-        const data = {
-            name: contact.name,
-            email: contact.email,
-            message: contact.message
-        };
-        
-        // Add Accept: application/json header to get 200 OK instead of 302 redirect
+        const params = new URLSearchParams();
+        params.append("name", contact.name ?? "");
+        params.append("email", contact.email ?? "");
+        params.append("message", contact.message ?? "");
+
         const headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Accept": "application/json"
         });
-        
-        // Pageclip sends a 302 redirect on success, which Angular HttpClient treats as an error
-        // Since we've confirmed Pageclip is receiving submissions, treat all responses as success
-        return this.http.post(this.pageclipUrl, data, { headers })
-            .toPromise()
-            .then(() => {
-                // Success response
-                return Promise.resolve({ success: true });
-            })
-            .catch(() => {
-                // Pageclip's 302 redirect appears as an error in Angular
-                // but the data is actually being submitted successfully
-                // So we treat this "error" as success
-                return Promise.resolve({ success: true });
+
+        return this.http.post(this.endpoint, params.toString(), {
+            headers,
+            responseType: "text"
+        }).toPromise()
+            .then(() => ({ success: true }))
+            .catch(error => {
+                const status = typeof error?.status === "number" ? error.status : undefined;
+                if (status === 0 || (status && status >= 300 && status < 400)) {
+                    return { success: true };
+                }
+                throw error;
             });
     }
 }

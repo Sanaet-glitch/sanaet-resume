@@ -2,7 +2,9 @@
     {
         "thumbnail": "assets/posts/logo-portswigger.png",
         "http": "https://www.credly.com/badges/b1e83fff-c350-41a6-9081-ce06eaa34b50/public_url",
-        "date": "01-01-2024",
+        "date": "06-01-2025",
+        "descriptionEllipsis": 0,
+        "descriptionClass": "description--expanded",
         "internationalizations": [
             {
                 "language": "en",
@@ -14,7 +16,9 @@
     {
         "thumbnail": "assets/posts/logo-aws.png",
         "http": "https://aws.amazon.com/training/restart/",
-        "date": "06-01-2024",
+        "date": "09-01-2025",
+        "descriptionEllipsis": 0,
+        "descriptionClass": "description--expanded",
         "internationalizations": [
             {
                 "language": "en",
@@ -26,7 +30,9 @@
     {
         "thumbnail": "assets/posts/logo-python-institute.png",
         "http": "https://pythoninstitute.org/",
-        "date": "09-01-2024",
+        "date": "07-01-2025",
+        "descriptionEllipsis": 0,
+        "descriptionClass": "description--expanded",
         "internationalizations": [
             {
                 "language": "en",

@@ -20,12 +20,12 @@
             {
                 "icon": "linkedin",
                 "title": "LinkedIn Nairobi Hospital",
-                "http": "https://www.linkedin.com/company/nairobi-hospital/"
+                "http": "https://www.linkedin.com/company/thenairobihospital/"
             },
             {
                 "icon": "facebook",
                 "title": "Facebook Nairobi Hospital",
-                "http": "https://www.facebook.com/TheNairobiHospital/"
+                "http": "https://web.facebook.com/TheNairobiHosp"
             }
         ],
         "backgroundUrl": "assets/template/experience/ports.png"
@@ -36,8 +36,6 @@
         "startAt": "12-01-2023",
         "endAt": null,
         "companyName": "Naret Olosho CBO",
-        "website": "https://example.com/",
-        "logo": null,
         "internationalizations": [
             {
                 "language": "en",

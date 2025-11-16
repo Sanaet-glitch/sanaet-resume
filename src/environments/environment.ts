@@ -4,10 +4,11 @@
 
 export const environment = {
   production: false,
+  contactEndpoint: "https://send.pageclip.co/HfKDDFoSIjCcd8R77W95M6KfYLLM7Zyk",
   // replace the data below with your personal data
   personal: {
     caricature: "sanaet-new-animation.png",
-    name: "George Sanaet Sankui",
+    name: "Sanaet Sankui George",
     birth: null,
     email: "sanaetofficial@gmail.com",
     phone: "+254 114487205",

@@ -40,7 +40,7 @@
                     <ol #orderedList>
                         <li *ngFor="let exp of experiencesOrdered; let i = index" [ngClass]="{'selected': i === 0}" data-id="{{ exp.id }}">
                             <div class="header-block">
-                                <div class="logo-block">
+                                <div class="logo-block" *ngIf="exp.logo">
                                     <a href="{{ exp.website }}" target="_blank"><img src="{{ exp.logo }}" alt="{{ exp.companyName }}"></a>
                                 </div>
                                 <div class="info-block">
@@ -71,11 +71,6 @@
                     </ol>
                 </div>
             </div>
-
-            <app-experience-timeline
-                [experiences]="experiences"
-                [currentPosition]="currentPosition"
-                (timelineChanged)="updateNavigation($event)"></app-experience-timeline>
         </div>
     </div>
 </section>
