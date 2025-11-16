@@ -1,9 +1,15 @@
 {
-  "version": 3,
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/api/serverless"
     }
-  ]
+  ],
+  "functions": {
+    "api/serverless.ts": {
+      "runtime": "nodejs20.x"
+    }
+  }
 }
