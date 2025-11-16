@@ -1,6 +1,16 @@
 import express, { Request, Response } from "express";
 import cors, { CorsOptions } from "cors";
 import { Resend } from "resend";
+import { config as loadEnv } from "dotenv";
+import { existsSync } from "fs";
+import { resolve } from "path";
+
+// Load .env and .env.local (if present) for local development
+loadEnv();
+const localEnvPath = resolve(process.cwd(), ".env.local");
+if (existsSync(localEnvPath)) {
+  loadEnv({ path: localEnvPath, override: true });
+}
 
 const {
   RESEND_API_KEY,
