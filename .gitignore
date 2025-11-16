@@ -47,3 +47,5 @@ testem.log
 Thumbs.db
 src/environments/environment.ts
 live-resume.code-workspace
+pageclip-webhook/.env.local
+pageclip-webhook/node_modules/
