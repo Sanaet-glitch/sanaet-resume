@@ -1,5 +1,10 @@
 @media screen and (max-width: 1024px) {
 
+    .dialog-container {
+        --dialog-offset-top: clamp(10px, 6vw, 80px);
+        --dialog-offset-right: clamp(-5px, 4vw, 50px);
+    }
+
     .dialog-container img {
         width: 435px;
     }
@@ -21,6 +26,11 @@
 }
 
 @media screen and (max-width: 880px) {
+
+    .dialog-container {
+        --dialog-offset-top: clamp(5px, 6.5vw, 60px);
+        --dialog-offset-right: clamp(-5px, 4.5vw, 40px);
+    }
     
     .dialog-container img {
         width: 325px;
@@ -45,8 +55,8 @@
 @media screen and (max-width: 720px) {
         
     .dialog-container {
-        margin-top: 2em;
-        margin-left: 0;
+        --dialog-offset-top: clamp(0px, 7vw, 40px);
+        --dialog-offset-right: clamp(-10px, 4.5vw, 30px);
     }
 
     .dialog-container img {
@@ -71,8 +81,8 @@
 @media screen and (max-width: 600px) {
         
     .dialog-container {
-        margin-top: 2em;
-        margin-left: 0;
+        --dialog-offset-top: clamp(0px, 8vw, 30px);
+        --dialog-offset-right: clamp(-10px, 5vw, 25px);
     }
 
     .dialog-container img {
@@ -98,8 +108,12 @@
 @media screen and (max-width: 500px) {
          
     .dialog-container {
-        margin-top: 3em;
-        margin-left: 0;
+        --dialog-offset-top: clamp(30px, 15vw, 80px);
+        --dialog-offset-right: unset;
+
+        left: 74%;
+
+        transform: translateX(-50%);
     }
 
     .dialog-container img {
@@ -128,8 +142,8 @@
 @media screen and (max-width: 320px) {
        
     .dialog-container {
-        margin-top: 3em;
-        margin-left: 0;
+        --dialog-offset-top: clamp(0px, 10vw, 25px);
+        --dialog-offset-right: clamp(-15px, 6vw, 20px);
     }
 
     .dialog-container img {

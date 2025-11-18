@@ -21,40 +21,67 @@
 
 @media screen and (max-width: 720px) {
     #welcome {
-        height: 385px;
+        height: auto;
+        padding: 3em 1.5em 4em;
+    }
+
+    .layer_one {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.75em;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .layer_one .avatar-container {
+        margin-left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        order: 1;
+    }
+    
+    .layer_one app-welcome-dialog {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        order: 2;
+        margin-top: 0.25em;
     }
     
     .layer_one .avatar-container .illustration {
-        height: 385px;
+        height: clamp(280px, 55vw, 360px);
     }
 }
 
 @media screen and (max-width: 600px) {
     #welcome {
-        height: 290px;
+        padding: 2.5em 1.25em 3.5em;
+        height: auto;
     }
     
     .layer_one .avatar-container .illustration {
-        height: 290px;
+        height: 310px;
     } 
 }
 
 @media screen and (max-width: 500px) {
     #welcome {
-        height: 250px;
+        padding: 2em 1.25em 3em;
     }
     
     .layer_one .avatar-container .illustration {
-        height: 250px;
+        height: 280px;
     } 
 }
 
 @media screen and (max-width: 320px) {
     #welcome {
-        height: 220px;
+        padding: 1.5em 1em 2.5em;
     }
     
     .layer_one .avatar-container .illustration {
-        height: 220px;
+        height: 240px;
     } 
 }

@@ -1,12 +1,14 @@
 
 /* Dialog container */
 .dialog-container {
+	--dialog-offset-top: clamp(20px, 5vw, 110px);
+	--dialog-offset-right: clamp(0px, 3vw, 70px);
 	z-index: 3;
-	margin-top: 5em;
+	margin-top: 0;
 	animation: float-dialog 6s ease-in-out infinite;
 	position: absolute;
-	right: 8%;
-	top: 20px;
+	right: var(--dialog-offset-right);
+	top: var(--dialog-offset-top);
 }
 
 .dialog-container img {
@@ -51,5 +53,12 @@
 	}
 	100% {
 		transform: translatey(0px);
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.dialog-container {
+		--dialog-offset-top: clamp(40px, 4vw, 150px);
+		--dialog-offset-right: clamp(10px, 4vw, 110px);
 	}
 }
