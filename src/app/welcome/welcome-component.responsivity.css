@@ -23,6 +23,8 @@
     #welcome {
         height: auto;
         padding: 3em 1.5em 0;
+        /* Increase pull-up to remove remaining blue gap below */
+        margin-bottom: -2.25rem;
     }
 
     .layer_one {
