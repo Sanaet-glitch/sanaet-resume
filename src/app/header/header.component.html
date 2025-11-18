@@ -14,8 +14,17 @@
             <li><a (click)="resetMenu()" href="#experience" i18n="nav@@experiences" itemprop="url"><span itemprop="name">Experiences</span></a></li>
             <li><a (click)="resetMenu()" href="#posts" i18n="nav@@posts" itemprop="url"><span itemprop="name">Certifications</span></a></li>
             <li><a (click)="resetMenu()" href="#contact" i18n="nav@@contact" itemprop="url"><span itemprop="name">Contact</span></a></li>
-            <!-- TODO: update here -->
-            <li><a (click)="resetMenu()" href="assets/cv-english-guilherme-bastos-v2.0.pdf" i18n-title="nav@@open.as.pdf" title="Open Resume as PDF" target="_blank"><fa-icon [icon]="faCloudDownloadAlt" class="bar-icon"></fa-icon></a></li>
+            <!-- Resume download link -->
+            <li>
+                <a (click)="resetMenu()"
+                   href="assets/GEORGE-SANAET-SANKUI-RESUME.pdf"
+                   i18n-title="nav@@open.as.pdf"
+                   title="Open Resume as PDF"
+                   download="Sanaet-Sankui-Resume.pdf"
+                   rel="noopener">
+                    <fa-icon [icon]="faCloudDownloadAlt" class="bar-icon"></fa-icon>
+                </a>
+            </li>
         </ul>
     </div>
 
