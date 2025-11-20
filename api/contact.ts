@@ -1,0 +1,112 @@
+import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { parse as parseForm } from "querystring";
+
+interface ContactPayload {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
+const MAX_FIELD_LENGTH = 1000;
+const MAX_MESSAGE_LENGTH = 5000;
+
+const sanitize = (value?: string, max = MAX_FIELD_LENGTH): string => {
+  if (typeof value !== "string") {
+    return "";
+  }
+  return value.trim().slice(0, max);
+};
+
+const buildEmailBody = (name: string, email: string, message: string): { html: string; text: string } => {
+  const html = `
+    <p><strong>Name:</strong> ${name || "(not provided)"}</p>
+    <p><strong>Email:</strong> ${email || "(not provided)"}</p>
+    <p><strong>Message:</strong></p>
+    <p style="white-space: pre-line;">${message || "(empty)"}</p>
+  `;
+
+  const text = `Name: ${name || "(not provided)"}\nEmail: ${email || "(not provided)"}\n\n${message || "(empty)"}`;
+
+  return { html, text };
+};
+
+const parsePayload = (req: VercelRequest): ContactPayload => {
+  const contentType = req.headers["content-type"] || "";
+
+  if (typeof req.body === "object" && !Buffer.isBuffer(req.body)) {
+    return req.body as ContactPayload;
+  }
+
+  if (contentType.includes("application/json") && typeof req.body === "string") {
+    try {
+      return JSON.parse(req.body);
+    } catch (error) {
+      return {};
+    }
+  }
+
+  if (contentType.includes("application/x-www-form-urlencoded") && typeof req.body === "string") {
+    return parseForm(req.body) as ContactPayload;
+  }
+
+  return {};
+};
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    return res.status(405).json({ error: "Method Not Allowed" });
+  }
+
+  const {
+    RESEND_API_KEY,
+    CONTACT_TO_EMAIL,
+    CONTACT_FROM_EMAIL,
+    CONTACT_SUBJECT_PREFIX
+  } = process.env;
+
+  if (!RESEND_API_KEY || !CONTACT_TO_EMAIL || !CONTACT_FROM_EMAIL) {
+    return res.status(500).json({ error: "Contact service not configured." });
+  }
+
+  const payload = parsePayload(req);
+  const name = sanitize(payload.name);
+  const email = sanitize(payload.email);
+  const message = sanitize(payload.message, MAX_MESSAGE_LENGTH);
+
+  if (!message || !email) {
+    return res.status(400).json({ error: "Missing required fields." });
+  }
+
+  const subjectBase = name ? `New contact from ${name}` : "New contact message";
+  const subject = CONTACT_SUBJECT_PREFIX ? `${CONTACT_SUBJECT_PREFIX} ${subjectBase}` : subjectBase;
+
+  const { html, text } = buildEmailBody(name, email, message);
+
+  try {
+    const resendResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        from: CONTACT_FROM_EMAIL,
+        to: CONTACT_TO_EMAIL.split(",").map(address => address.trim()).filter(Boolean),
+        reply_to: email || undefined,
+        subject,
+        html,
+        text
+      })
+    });
+
+    if (!resendResponse.ok) {
+      const errorText = await resendResponse.text();
+      return res.status(502).json({ error: "Unable to send message.", details: errorText });
+    }
+
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    return res.status(502).json({ error: "Unexpected error while contacting email service." });
+  }
+}

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  contactEndpoint: "https://send.pageclip.co/HfKDDFoSIjCcd8R77W95M6KfYLLM7Zyk",
+  contactEndpoint: "/api/contact",
   // replace the data below with your personal data
   personal: {
     caricature: "sanaet-new-animation.png",
