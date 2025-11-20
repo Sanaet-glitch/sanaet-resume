@@ -1,7 +1,12 @@
 import { Contact } from "../model/contact.model";
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../environments/environment";
+
+interface ContactApiResponse {
+    success?: boolean;
+    error?: string;
+}
 
 @Injectable({ providedIn: "root" })
 export class ContactService {
@@ -10,28 +15,46 @@ export class ContactService {
 
     constructor(private http: HttpClient) { }
 
-    createContact(contact: Contact): Promise<any> {
-        const params = new URLSearchParams();
-        params.append("name", contact.name ?? "");
-        params.append("email", contact.email ?? "");
-        params.append("message", contact.message ?? "");
+    async createContact(contact: Contact): Promise<void> {
+        const payload = {
+            name: contact.name ?? "",
+            email: contact.email ?? "",
+            message: contact.message ?? ""
+        };
 
         const headers = new HttpHeaders({
-            "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "application/json"
         });
 
-        return this.http.post(this.endpoint, params.toString(), {
-            headers,
-            responseType: "text"
-        }).toPromise()
-            .then(() => ({ success: true }))
-            .catch(error => {
-                const status = typeof error?.status === "number" ? error.status : undefined;
-                if (status === 0 || (status && status >= 300 && status < 400)) {
-                    return { success: true };
+        try {
+            const response = await this.http.post<ContactApiResponse>(this.endpoint, payload, { headers }).toPromise();
+            if (!response?.success) {
+                throw new Error(response?.error || "Unexpected response from contact service.");
+            }
+        } catch (error) {
+            throw this.normalizeError(error);
+        }
+    }
+
+    private normalizeError(error: unknown): Error {
+        if (error instanceof HttpErrorResponse) {
+            if (error.error) {
+                if (typeof error.error === "string") {
+                    return new Error(error.error);
                 }
-                throw error;
-            });
+                if (typeof error.error === "object" && typeof error.error.error === "string") {
+                    return new Error(error.error.error);
+                }
+            }
+            if (error.message) {
+                return new Error(error.message);
+            }
+        }
+
+        if (error instanceof Error) {
+            return error;
+        }
+
+        return new Error("Unable to send your message right now. Please try again later.");
     }
 }

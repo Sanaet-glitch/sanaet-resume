@@ -29,6 +29,7 @@ export class ContactComponent implements OnInit {
   isLoading: boolean = false;
   hasBeenSubmited: boolean = false;
   feedbackStatus: string;
+  feedbackDetails: string = "";
 
   constructor(private contactService: ContactService) { }
 
@@ -78,12 +79,13 @@ export class ContactComponent implements OnInit {
   saveContact(contact: Contact) {
     this.contactService.createContact(contact)
       .then(() => this.displayUserInterfaceMessage(true))
-      .catch(() => this.displayUserInterfaceMessage(false));
+      .catch(error => this.displayUserInterfaceMessage(false, this.resolveErrorMessage(error)));
   }
 
-  displayUserInterfaceMessage(hasBeenSuccessfuly: boolean) {
+  displayUserInterfaceMessage(hasBeenSuccessfuly: boolean, details?: string) {
     this.isLoading = false;
     this.feedbackStatus = hasBeenSuccessfuly ? "success" : "error";
+    this.feedbackDetails = hasBeenSuccessfuly ? "" : (details || "");
 
     if (hasBeenSuccessfuly) {
       this.contactForm.reset();
@@ -93,12 +95,14 @@ export class ContactComponent implements OnInit {
   closeFeedbackMessage() {
     this.hasBeenSubmited = false;
     this.feedbackStatus = "";
+    this.feedbackDetails = "";
   }
 
   onSubmit(contactForm) {
     this.isLoading = true;
     this.hasBeenSubmited = true;
     this.feedbackStatus = "pending";
+    this.feedbackDetails = "";
 
     const contactValues: Contact = {
       name: this.senderName.value,
@@ -108,5 +112,25 @@ export class ContactComponent implements OnInit {
     } as Contact;
 
     this.saveContact(contactValues);
+  }
+
+  private resolveErrorMessage(error: unknown): string {
+    if (!error) {
+      return "";
+    }
+
+    if (typeof error === "string") {
+      return error;
+    }
+
+    if (error instanceof Error) {
+      return error.message;
+    }
+
+    if (typeof error === "object" && "message" in error && typeof (error as any).message === "string") {
+      return (error as any).message;
+    }
+
+    return "";
   }
 }

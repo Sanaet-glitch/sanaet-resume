@@ -1,5 +1,5 @@
 <section id="contact" itemscope itemtype="https://schema.org/ContactPage">
-    <div class="feedback-container" [ngClass]="feedbackStatus">
+    <div class="feedback-container" [ngClass]="feedbackStatus" aria-live="polite">
         <p class="pending">
             <span i18n="contact@@pendingSubmit">Sending your message...</span>
         </p>
@@ -9,6 +9,7 @@
         </p>
         <p class="error">
             <span i18n="contact@@errorSubmit">Sorry, there is an instability, try again later, or contact me via email or social media.</span>
+            <small class="details" *ngIf="feedbackDetails">{{ feedbackDetails }}</small>
             <fa-icon [icon]="faTimes" class="icon" title="Close" (click)="closeFeedbackMessage()" *ngIf="feedbackStatus !== 'pending'"></fa-icon>
         </p>
     </div>
@@ -57,7 +58,7 @@
                             <small *ngIf="senderMessage.errors?.required" class="text-danger" i18n="contact@@requiredMessageError">The message is required.</small>
                         </div>
                     </div>
-                    <input type="submit" i18n-value="contact@@send" value="Send">                
+                    <input type="submit" i18n-value="contact@@send" value="Send" [disabled]="contactForm.invalid || isLoading">
                 </form>
             </div>
         </div>
