@@ -33,7 +33,7 @@ const readRequestBody = async (req) => {
   }
 
   if (typeof req.body === "object" && req.body !== null) {
-    return JSON.stringify(req.body);
+    return req.body;
   }
 
   return await new Promise((resolve, reject) => {
@@ -62,6 +62,10 @@ const normalizeContentType = value => {
 const parsePayload = (rawBody, contentType) => {
   if (!rawBody) {
     return {};
+  }
+
+  if (typeof rawBody === "object") {
+    return rawBody;
   }
 
   if (contentType.includes("application/json")) {
