@@ -128,7 +128,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (!resendResponse.ok) {
       const errorText = await resendResponse.text();
-      return res.status(502).json({ error: "Unable to send message.", details: errorText });
+      console.error("Resend API error", {
+        status: resendResponse.status,
+        statusText: resendResponse.statusText,
+        body: errorText
+      });
+      return res.status(502).json({
+        error: "Unable to send message via email provider.",
+        status: resendResponse.status,
+        details: errorText
+      });
     }
 
     return res.status(200).json({ success: true });
