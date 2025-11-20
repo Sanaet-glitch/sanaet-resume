@@ -1,23 +1,16 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
 const { parse: parseForm } = require("node:querystring");
-
-interface ContactPayload {
-  name?: string;
-  email?: string;
-  message?: string;
-}
 
 const MAX_FIELD_LENGTH = 1000;
 const MAX_MESSAGE_LENGTH = 5000;
 
-const sanitize = (value?: string, max = MAX_FIELD_LENGTH): string => {
+const sanitize = (value, max = MAX_FIELD_LENGTH) => {
   if (typeof value !== "string") {
     return "";
   }
   return value.trim().slice(0, max);
 };
 
-const buildEmailBody = (name: string, email: string, message: string): { html: string; text: string } => {
+const buildEmailBody = (name, email, message) => {
   const html = `
     <p><strong>Name:</strong> ${name || "(not provided)"}</p>
     <p><strong>Email:</strong> ${email || "(not provided)"}</p>
@@ -30,7 +23,7 @@ const buildEmailBody = (name: string, email: string, message: string): { html: s
   return { html, text };
 };
 
-const readRequestBody = async (req: VercelRequest): Promise<string> => {
+const readRequestBody = async (req) => {
   if (typeof req.body === "string") {
     return req.body;
   }
@@ -43,7 +36,7 @@ const readRequestBody = async (req: VercelRequest): Promise<string> => {
     return JSON.stringify(req.body);
   }
 
-  return await new Promise<string>((resolve, reject) => {
+  return await new Promise((resolve, reject) => {
     let data = "";
     req.on("data", chunk => {
       data += chunk;
@@ -56,7 +49,17 @@ const readRequestBody = async (req: VercelRequest): Promise<string> => {
   });
 };
 
-const parsePayload = (rawBody: string, contentType: string): ContactPayload => {
+const normalizeContentType = value => {
+  if (!value) {
+    return "";
+  }
+  if (Array.isArray(value)) {
+    return value[0] || "";
+  }
+  return value;
+};
+
+const parsePayload = (rawBody, contentType) => {
   if (!rawBody) {
     return {};
   }
@@ -70,13 +73,13 @@ const parsePayload = (rawBody: string, contentType: string): ContactPayload => {
   }
 
   if (contentType.includes("application/x-www-form-urlencoded")) {
-    return parseForm(rawBody) as ContactPayload;
+    return parseForm(rawBody);
   }
 
   return {};
 };
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ error: "Method Not Allowed" });
@@ -94,7 +97,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const contentType = (req.headers["content-type"] as string) || "";
+    const contentType = normalizeContentType(req.headers["content-type"]);
     const rawBody = await readRequestBody(req);
     const payload = parsePayload(rawBody, contentType);
     const name = sanitize(payload.name);
@@ -146,4 +149,4 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const message = error instanceof Error ? error.message : "Unexpected error";
     return res.status(502).json({ error: message });
   }
-}
+};
