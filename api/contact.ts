@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { parse as parseForm } from "querystring";
+const { parse: parseForm } = require("node:querystring");
 
 interface ContactPayload {
   name?: string;
