@@ -30,23 +30,47 @@ const buildEmailBody = (name: string, email: string, message: string): { html: s
   return { html, text };
 };
 
-const parsePayload = (req: VercelRequest): ContactPayload => {
-  const contentType = req.headers["content-type"] || "";
-
-  if (typeof req.body === "object" && !Buffer.isBuffer(req.body)) {
-    return req.body as ContactPayload;
+const readRequestBody = async (req: VercelRequest): Promise<string> => {
+  if (typeof req.body === "string") {
+    return req.body;
   }
 
-  if (contentType.includes("application/json") && typeof req.body === "string") {
+  if (Buffer.isBuffer(req.body)) {
+    return req.body.toString("utf8");
+  }
+
+  if (typeof req.body === "object" && req.body !== null) {
+    return JSON.stringify(req.body);
+  }
+
+  return await new Promise<string>((resolve, reject) => {
+    let data = "";
+    req.on("data", chunk => {
+      data += chunk;
+      if (data.length > MAX_MESSAGE_LENGTH * 4) {
+        reject(new Error("Payload too large"));
+      }
+    });
+    req.on("end", () => resolve(data));
+    req.on("error", reject);
+  });
+};
+
+const parsePayload = (rawBody: string, contentType: string): ContactPayload => {
+  if (!rawBody) {
+    return {};
+  }
+
+  if (contentType.includes("application/json")) {
     try {
-      return JSON.parse(req.body);
+      return JSON.parse(rawBody);
     } catch (error) {
       return {};
     }
   }
 
-  if (contentType.includes("application/x-www-form-urlencoded") && typeof req.body === "string") {
-    return parseForm(req.body) as ContactPayload;
+  if (contentType.includes("application/x-www-form-urlencoded")) {
+    return parseForm(rawBody) as ContactPayload;
   }
 
   return {};
@@ -69,21 +93,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: "Contact service not configured." });
   }
 
-  const payload = parsePayload(req);
-  const name = sanitize(payload.name);
-  const email = sanitize(payload.email);
-  const message = sanitize(payload.message, MAX_MESSAGE_LENGTH);
-
-  if (!message || !email) {
-    return res.status(400).json({ error: "Missing required fields." });
-  }
-
-  const subjectBase = name ? `New contact from ${name}` : "New contact message";
-  const subject = CONTACT_SUBJECT_PREFIX ? `${CONTACT_SUBJECT_PREFIX} ${subjectBase}` : subjectBase;
-
-  const { html, text } = buildEmailBody(name, email, message);
-
   try {
+    const contentType = (req.headers["content-type"] as string) || "";
+    const rawBody = await readRequestBody(req);
+    const payload = parsePayload(rawBody, contentType);
+    const name = sanitize(payload.name);
+    const email = sanitize(payload.email);
+    const message = sanitize(payload.message, MAX_MESSAGE_LENGTH);
+
+    if (!message || !email) {
+      return res.status(400).json({ error: "Missing required fields." });
+    }
+
+    const subjectBase = name ? `New contact from ${name}` : "New contact message";
+    const subject = CONTACT_SUBJECT_PREFIX ? `${CONTACT_SUBJECT_PREFIX} ${subjectBase}` : subjectBase;
+
+    const { html, text } = buildEmailBody(name, email, message);
+
     const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -107,6 +133,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    return res.status(502).json({ error: "Unexpected error while contacting email service." });
+    console.error("Contact API error", error);
+    const message = error instanceof Error ? error.message : "Unexpected error";
+    return res.status(502).json({ error: message });
   }
 }
