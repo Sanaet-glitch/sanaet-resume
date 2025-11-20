@@ -4,7 +4,11 @@
   "outputDirectory": "dist/live-resume",
   "rewrites": [
     {
-      "source": "/((?!api).*)",
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
