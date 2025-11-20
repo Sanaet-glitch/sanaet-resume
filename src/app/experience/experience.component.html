@@ -20,16 +20,18 @@
                 <!-- Custom mobile menu active under 600px wide resolution -->
                 <div class="navigation-mobile">
                     <a href="javascript:void(0)" class="previous" (click)="onClickPrevious()" [ngClass]="{'disabled': disablePreviousNavigation()}">
-                       <div class="molding">
-                           <span [innerHtml]="previousYear | safariDateFormatter | localizedDate:'yyyy'"></span>
-                           <fa-icon [icon]="['fas', 'chevron-left']" class="icon" i18n-title="exp.nav@@previous" title="Previous"></fa-icon>
+                        <div class="molding">
+                            <span [innerHtml]="(experiencesOrdered[currentPosition - 2]?.startAt || experiencesOrdered[currentPosition - 1]?.startAt) | safariDateFormatter | localizedDate:'yyyy'"></span>
+                            <fa-icon [icon]="['fas', 'chevron-left']" class="icon" i18n-title="exp.nav@@previous" title="Previous"></fa-icon>
                         </div>
                     </a>
-                    <div class="current"><span [innerHtml]="currentYear | safariDateFormatter | localizedDate:'yyyy'"></span></div>
+                    <div class="current">
+                        <span [innerHtml]="experiencesOrdered[currentPosition - 1]?.startAt | safariDateFormatter | localizedDate:'yyyy'"></span>
+                    </div>
                     <a href="javascript:void(0)" class="next" (click)="onClickNext()" [ngClass]="{'disabled': disableNextNavigation()}">
                         <div class="molding">
                             <fa-icon [icon]="['fas', 'chevron-right']" class="icon" i18n-title="exp.nav@@next" title="Next"></fa-icon>
-                            <span [innerHtml]="nextYear | safariDateFormatter | localizedDate:'yyyy'"></span>
+                            <span [innerHtml]="(experiencesOrdered[currentPosition]?.startAt || experiencesOrdered[currentPosition - 1]?.startAt) | safariDateFormatter | localizedDate:'yyyy'"></span>
                         </div>
                     </a>
                 </div>

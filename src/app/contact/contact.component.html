@@ -1,12 +1,15 @@
 <section id="contact" itemscope itemtype="https://schema.org/ContactPage">
     <div class="feedback-container" [ngClass]="feedbackStatus">
+        <p class="pending">
+            <span i18n="contact@@pendingSubmit">Sending your message...</span>
+        </p>
         <p class="success">
             <span i18n="contact@@successfulSubmit">Thank you for contacting me, I'll reply to you soon.</span>
-            <fa-icon [icon]="faTimes" class="icon" title="Close" (click)="closeFeedbackMessage()"></fa-icon>
+            <fa-icon [icon]="faTimes" class="icon" title="Close" (click)="closeFeedbackMessage()" *ngIf="feedbackStatus !== 'pending'"></fa-icon>
         </p>
         <p class="error">
             <span i18n="contact@@errorSubmit">Sorry, there is an instability, try again later, or contact me via email or social media.</span>
-            <fa-icon [icon]="faTimes" class="icon" title="Close" (click)="closeFeedbackMessage()"></fa-icon>
+            <fa-icon [icon]="faTimes" class="icon" title="Close" (click)="closeFeedbackMessage()" *ngIf="feedbackStatus !== 'pending'"></fa-icon>
         </p>
     </div>
     <div class="container" [ngClass]="{'fade': hasBeenSubmited}">

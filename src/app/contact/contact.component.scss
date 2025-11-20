@@ -41,6 +41,11 @@
             color: #373837;
         }
 
+        .pending {
+            display: none;
+            color: #2a3f6e;
+        }
+
         &.success {
             display: block;
             background-color: #c4e4c6;
@@ -61,6 +66,22 @@
 
             .error { 
                 display: inline;
+            }
+        }
+
+        &.pending {
+            display: block;
+            background-color: #dbe7ff;
+            border: 1px solid #c0d2ff;
+            -webkit-animation: fadeIn 0.4s;
+            animation: fadeIn 0.4s;
+
+            .pending {
+                display: inline;
+            }
+
+            .icon {
+                display: none;
             }
         }
     }

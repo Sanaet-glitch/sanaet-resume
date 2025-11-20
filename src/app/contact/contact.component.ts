@@ -76,19 +76,18 @@ export class ContactComponent implements OnInit {
   }
 
   saveContact(contact: Contact) {
-    this.contactService.createContact(contact).then(() => {
-      this.displayUserInterfaceMessage(true);
-    })
-    .catch(error => {
-      this.displayUserInterfaceMessage(false);
-    });
+    this.contactService.createContact(contact)
+      .then(() => this.displayUserInterfaceMessage(true))
+      .catch(() => this.displayUserInterfaceMessage(false));
   }
 
   displayUserInterfaceMessage(hasBeenSuccessfuly: boolean) {
     this.isLoading = false;
-    this.hasBeenSubmited = true;
-    this.feedbackStatus = hasBeenSuccessfuly? "success" : "error";
-    this.contactForm.reset();
+    this.feedbackStatus = hasBeenSuccessfuly ? "success" : "error";
+
+    if (hasBeenSuccessfuly) {
+      this.contactForm.reset();
+    }
   }
 
   closeFeedbackMessage() {
@@ -98,6 +97,8 @@ export class ContactComponent implements OnInit {
 
   onSubmit(contactForm) {
     this.isLoading = true;
+    this.hasBeenSubmited = true;
+    this.feedbackStatus = "pending";
 
     const contactValues: Contact = {
       name: this.senderName.value,
