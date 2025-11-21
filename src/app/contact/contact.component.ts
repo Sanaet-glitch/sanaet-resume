@@ -86,6 +86,7 @@ export class ContactComponent implements OnInit {
     this.isLoading = false;
     this.feedbackStatus = hasBeenSuccessfuly ? "success" : "error";
     this.feedbackDetails = hasBeenSuccessfuly ? "" : (details || "");
+    this.hasBeenSubmited = false;
 
     if (hasBeenSuccessfuly) {
       this.contactForm.reset();
