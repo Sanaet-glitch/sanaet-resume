@@ -50,3 +50,4 @@ live-resume.code-workspace
 pageclip-webhook/.env.local
 pageclip-webhook/node_modules/
 .venv/
+.vercel
